@@ -48,7 +48,7 @@ class Calculator {
   def withMedicare(netAmount: BigDecimal) = {
     //medicareThresholds.foreach( t => print(t))
     def gross(t: Threshold) = {
-      val top = netAmount + t.baseTax
+      val top = netAmount + t.baseTax - t.lowerThreshold * t.rate
       val bottom = 1 - t.rate - MEDICARE_LEVY
       top / bottom
     }
